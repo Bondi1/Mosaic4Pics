@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Photo Mosaic Viewer</title>
+    <!-- Making it device independent -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Breaking the width into 2 divs with some formatting and hence 45% -->
+    <style>
+      img {
+      	max-width:100%;
+      	height:auto;
+      }
+      .parent_div{
+        width:45%;
+        height: auto;
+        margin-right:10px;
+        float:left;
+      }
+      .pleasedontfloat {
+          clear:both;
+      }
+    </style>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/mosaic.js"></script>
+    <script type="text/javascript" src="js/client.js"></script>
+    <script type="text/javascript" src="js/worker.js"></script>
+    </head>
+  <body>
+    <!-- Edit me. -->
+    <h4>Select a local image file to view its photo mosaic.</h4>
+
+    <input type="file" id="input_file" accept="image/*" onchange="selectFile(event)" /><br><br>
+    <div id="original" class="parent_div">
+        <img id='selectedImage' alt="" title="Selected Image"/>
+    </div>
+   <!-- Using nested svgs to achieve responsiveness on resize of window.
+        Outer svg being declared here whose viewbox will be set dynamically-->
+    <svg id='targetSvgImage' class="parent_div"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      version="1.1">
+    </svg>
+
+    <div id="Message" class="pleasedontfloat"/>
+
+  </body>
+</html>
